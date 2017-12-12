@@ -1,0 +1,22 @@
+page-login {
+    .login-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+        .title {
+            font-family: 'super-natural';
+            font-size: 30px;
+            text-align: center;
+        }
+
+        img {
+            width: 80%;
+        }
+
+        button {
+            margin-top: 30px;
+        }
+    }
+}

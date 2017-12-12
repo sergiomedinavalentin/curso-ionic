@@ -1,0 +1,5 @@
+<!-- Generated template for the RangeComponent component -->
+<ion-range [(ngModel)]="brightness" [min]="min" [max]="max" pin="true" (ionChange)="change()">
+  <ion-icon range-left small name="sunny">{{min}}</ion-icon>
+  <ion-icon range-right name="sunny">{{max}}</ion-icon>
+</ion-range>

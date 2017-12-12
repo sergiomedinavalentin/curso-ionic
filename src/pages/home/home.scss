@@ -1,3 +1,32 @@
 page-home {
+    .range-component {
+        margin-bottom: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
 
+        button {
+            width: 40%;
+            margin: 10px auto;
+        }
+    }
+
+    .list {
+        background-color: color($colors, light);
+
+        .item {
+            background-color: color($colors, light);
+        }
+
+        .card-content {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &.expand {
+                white-space: normal;
+            }
+        }
+    }
 }

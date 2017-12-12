@@ -38,8 +38,11 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  facebook:   #3b5998
 );
+
+$fab-ios-list-button-transition-duration: 100ms;
 
 
 // App iOS Variables

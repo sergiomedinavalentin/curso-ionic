@@ -8,11 +8,80 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <ion-fab top right edge>
+    <button ion-fab mini color="dark">
+      <ion-icon name="list"></ion-icon>
+    </button>
+    <ion-fab-list>
+      <button ion-fab (click)="add()" color="secondary">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-fab (click)="remove()" color="danger">
+        <ion-icon name="remove"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <ion-fab right bottom>
+    <button ion-fab color="light">
+      <ion-icon name="image"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button ion-fab (click)="getPictureFromCamera()" color="primary">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+      <button ion-fab (click)="getPictureFromGallery()" color="primary">
+        <ion-icon name="images"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <div class="range-component">
+    <range [rangeValues]="range" (brightnessEmiter)="changeBrightness($event)"></range>
+    <span>Brillo: {{brightness}}</span>
+    <button ion-button round small (click)="changeRange()">Cambiar valores</button>
+  </div>
+
+  <ion-card *ngFor="let item of items | slice:0:items.length; let i = index" class="list">
+    <ion-item>
+      <h2>{{item.title}}</h2>
+      <ion-icon ios="ios-arrow-down" item-end (click)="expand(i)" *ngIf="!item.expand"></ion-icon>
+      <ion-icon ios="ios-arrow-up" item-end (click)="expand(i)" *ngIf="item.expand"></ion-icon>
+    </ion-item>
+    <ion-card-content [ngClass]="{'expand': item.expand}">
+      {{item.body}}
+    </ion-card-content>
+  </ion-card>
+
+  <div class="image-content" *ngIf="image">
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img [src]="image">
+        </ion-avatar>
+        <h2>Sergio</h2>
+        <p>sergiomedina@smartnode.es</p>
+      </ion-item>
+        
+      <ion-card-content>
+        <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa.
+          This is heavy.</p>
+      </ion-card-content>
+    
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>12 Likes</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>4 Comments</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
 </ion-content>
