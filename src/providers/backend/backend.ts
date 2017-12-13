@@ -45,6 +45,7 @@ export class BackendProvider {
       request.subscribe(res => {
         resolve(res);
       }, error => {
+        reject(error);
         console.log('error', error);
       });
     });
