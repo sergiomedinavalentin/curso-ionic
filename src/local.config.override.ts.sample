@@ -1,0 +1,20 @@
+// active environment
+export const environment = 'dev';
+
+/**
+ * dev
+ */
+export const dev = {
+};
+
+/**
+ * pre
+ */
+export const pre = {
+};
+
+/**
+ * prod
+ */
+export const prod = {
+};

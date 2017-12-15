@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, ToastController, NavController, InfiniteScroll } from 'ionic-angular';
-import { BackendProvider } from './../../providers/backend/backend';
+import { MarvelProvider } from './../../providers/marvel/marvel';
 import { ITEM_INFO } from './../pages.constants';
 
 export interface MarvelData {
@@ -25,7 +25,7 @@ export class ListPage {
   responseLength: number;
 
   constructor(
-    private backendProvider: BackendProvider,
+    private marvelProvider: MarvelProvider,
     private toastCtrl: ToastController,
     private navCtrl: NavController
   ) {
@@ -85,10 +85,7 @@ export class ListPage {
   }
 
   async getData() {
-    const response = await this.backendProvider.getResources(`characters`, {
-      apikey: 'xxx',
-      hash: 'xxx',
-      ts: 1512426655586,
+    const response = await this.marvelProvider.getCharacters({
       offset: this.offset,
       limit: this.limit
     });

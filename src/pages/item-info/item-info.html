@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Detalle</ion-title>
+    <ion-title>{{ 'PAGES.DETAIL' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -28,7 +28,7 @@
 
   <ion-card *ngIf="item.series.items.length">
     <ion-card-header>
-       Series
+      {{ 'LIST.SERIES' | translate }}
     </ion-card-header>
     <ion-card-content>
       <ion-list>
@@ -41,7 +41,7 @@
 
   <ion-card *ngIf="item.comics.items.length">
     <ion-card-header>
-      Comics
+      {{ 'LIST.COMICS' | translate }}
     </ion-card-header>
     <ion-card-content>
       <ion-list>

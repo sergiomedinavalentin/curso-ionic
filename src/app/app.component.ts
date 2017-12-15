@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -15,15 +16,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private translateService: TranslateService
+  ) {
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HOME_PAGE },
-      { title: 'List', component: LIST_PAGE }
-    ];
-
   }
 
   initializeApp() {
@@ -32,6 +31,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.translateService.setDefaultLang('es');
+
+      this.changeLanguage('es');
     });
   }
 
@@ -39,5 +41,18 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  changeLanguage(language: string) {
+    this.translateService.use(language);
+
+    this.translateService.get('PAGES').subscribe(
+      value => {
+        this.pages = [
+          { title: value.HOME, component: HOME_PAGE },
+          { title: value.LIST, component: LIST_PAGE }
+        ];
+      }
+    );
   }
 }

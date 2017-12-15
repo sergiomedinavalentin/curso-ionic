@@ -1,0 +1,16 @@
+{
+    "PAGES": {
+        "MENU": "Menú",
+        "HOME": "Inicio",
+        "LIST": "Lista",
+        "DETAIL": "Detalle"
+    },
+    "HOME": {
+        "BRIGHTNESS": "Brillo: {{brightness}}",
+        "CHANGE_VALUES": "Cambiar valores"
+    },
+    "LIST": {
+        "SERIES": "Series",
+        "COMICS": "Comics"
+    }
+}

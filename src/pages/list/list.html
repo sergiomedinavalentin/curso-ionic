@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>{{ 'PAGES.LIST' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -26,13 +26,13 @@
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="ios-videocam"></ion-icon>
-            <div>Series: {{item.series.returned}}</div>
+            <div>{{ 'LIST.SERIES' | translate }}: {{item.series.returned}}</div>
           </button>
         </ion-col>
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="md-book"></ion-icon>
-            <div>Comics: {{item.comics.returned}}</div>
+            <div>{{ 'LIST.COMICS' | translate }}: {{item.comics.returned}}</div>
           </button>
         </ion-col>
       </ion-row>

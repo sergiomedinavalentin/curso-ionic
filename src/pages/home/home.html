@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>{{ 'PAGES.HOME' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -38,8 +38,8 @@
 
   <div class="range-component">
     <range [rangeValues]="range" (brightnessEmiter)="changeBrightness($event)"></range>
-    <span>Brillo: {{brightness}}</span>
-    <button ion-button round small (click)="changeRange()">Cambiar valores</button>
+    <span>{{ 'HOME.BRIGHTNESS' | translate: {brightness: brightness} }}</span>
+    <button ion-button round small (click)="changeRange()">{{ 'HOME.CHANGE_VALUES' | translate }}</button>
   </div>
 
   <ion-card *ngFor="let item of items | slice:0:items.length; let i = index" class="list">
@@ -49,7 +49,7 @@
       <ion-icon ios="ios-arrow-up" item-end (click)="expand(i)" *ngIf="item.expand"></ion-icon>
     </ion-item>
     <ion-card-content [ngClass]="{'expand': item.expand}">
-      {{item.body}}
+      {{item.body | capitalize:{expand: item.expand} }}
     </ion-card-content>
   </ion-card>
 

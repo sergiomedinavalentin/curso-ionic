@@ -3,6 +3,7 @@ import { Http, Response, URLSearchParams, Headers, RequestOptions } from '@angul
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/share';
+import { LocalConfig } from '../../local.config';
 
 export interface IResponseObjects {
   success: boolean,
@@ -18,10 +19,10 @@ export class BackendProvider {
     'Content-Type': 'application/json'
   };
 
-  serverBaseUrl: string = 'http://gateway.marvel.com/v1/public/';
-
   constructor(
-    private http: Http) { }
+    private http: Http,
+    private localConfig: LocalConfig
+  ) { }
 
   /**
    * Performs a GET to the backend
@@ -38,7 +39,7 @@ export class BackendProvider {
       options.search = this.objectToURLSearchParams(params);
     }
 
-    let request = this.http.get(this.serverBaseUrl + resourceName, options)
+    let request = this.http.get(this.localConfig.apiBaseUrl + resourceName, options)
       .map(this.extractFullBody).share();
 
     return new Promise((resolve, reject) => {
@@ -57,7 +58,7 @@ export class BackendProvider {
    * @return {IResponseObjects}
    */
   private extractFullBody(res: Response) {
-    let body: IResponseObjects = res.json();
+    const body: IResponseObjects = res.json();
     return body;
   }
 
@@ -68,10 +69,10 @@ export class BackendProvider {
    * @return {URLSearchParams}
    */
   private objectToURLSearchParams(obj: any, prefix?: string): URLSearchParams {
-    var urlSearchParams = new URLSearchParams();
-    for (var p in obj) {
+    const urlSearchParams = new URLSearchParams();
+    for (let p in obj) {
       if (obj.hasOwnProperty(p)) {
-        var k = prefix ? prefix + '[' + p + ']' : p,
+        const k = prefix ? prefix + '[' + p + ']' : p,
           v = obj[p];
         urlSearchParams.set(k, v === 'object' ? JSON.stringify(v) : v);
       }
